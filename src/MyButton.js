@@ -1,11 +1,17 @@
 import { Button } from '@mui/material';
-import { makeStyles } from '@mui/styles';
+import { styled } from '@mui/material/styles';
+const PREFIX = 'MyButton';
 
-const useStyles = makeStyles({
-  root: {
+const classes = {
+  root: `${PREFIX}-root`,
+  contained: `${PREFIX}-contained`
+};
+
+const StyledButton = styled(Button)({
+  [`& .${classes.root}`]: {
     borderRadius: '8px',
   },
-  contained: {
+  [`& .${classes.contained}`]: {
     '& > *': {
       color: 'yellow',
     },
@@ -24,6 +30,8 @@ const useStyles = makeStyles({
 export default function MyButton(
   props
 ) {
-  const classes = useStyles();
-  return <Button {...props} classes={classes} />;
+  /*
+    Need to uncomment generated classes statement for the project to compile.
+  */
+  return <StyledButton {...props} /*{classes}*/ />;
 }
